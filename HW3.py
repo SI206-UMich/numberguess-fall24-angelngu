@@ -3,8 +3,9 @@
 # Your email: angelngu@umich.edu 
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.  
-# e.g.: 
-# Asked Chatgpt hints for debugging and suggesting the general sturcture of the code
+# e.g.:
+#i asked chat GPT to help me structure the format for the sections especialy with check_get_answer and help me with debugging when there were errors or when the index was out of range  
+#i also asked it to help check my test codes and extra credit 
 
 import random 
 # create a Digital Book of Answers
@@ -168,21 +169,26 @@ def test():
 # Extra Credit
 def my_test():
     # Put your test code here
-    answers_list = ['Follow Your Inner Voice', 'Stay Positive', 'Go For It', 'Believe in Yourself', 'Stay Open to the Future', 'Enjoy It']
+    answers_list = ['Stay Positive', 'Go For It', 'Enjoy It']
     book = DigitalBookofAnswers(answers_list)
 
     assert book.answer_log() == [], "Expected empty log"
 
-    book.answered_list = [0, 0, 1, 2]
-    expected_log = ['2 - follow your inner voice', '1 - stay positive', '1 - go for it']
+    book.answered_list = [2, 1, 2]
+    expected_log = ['2 - enjoy it', '1 - go for it']
     assert book.answer_log() == expected_log, f"Expected: {expected_log}, got: {book.answer_log()}"
 
-    question= "is this a test"
+    question= "is this a test" #correct output when new question is asked in check_get_answer
     response = book.check_get_answer(question)
     assert "I've already answered this question" not in response, "Expected new question response"
 
+     #correct output when same question is asked in check_get_answer
+    repeat_response = book.check_get_answer(question) 
+    assert "I've already answered this question" in repeat_response, "Expected repeated question response"
+    print ("All tests passed")
 
     pass
+
 
 
 def main():
