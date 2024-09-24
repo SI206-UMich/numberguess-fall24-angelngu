@@ -179,7 +179,7 @@ def my_test():
     assert book.answer_log() == expected_log, f"Expected: {expected_log}, got: {book.answer_log()}"
 
     question= "is this a test" #correct output when new question is asked in check_get_answer
-    response = book.check_get_answer(question)
+    response = book.check_get_answer(question) 
     assert "I've already answered this question" not in response, "Expected new question response"
 
      #correct output when same question is asked in check_get_answer
